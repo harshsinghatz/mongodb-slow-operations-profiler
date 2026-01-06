@@ -41,11 +41,7 @@ public abstract class CmdCurrentOp implements ICommand {
                 "numYield",
                 "active",
                 "tag",
-                "client",
-                "connectionId",
-                "desc",
-                "waitingForLock",
-                "waitingForFlowControl"));
+                "client"));
 
         commandResultDto.setJsonFormattedColumn(6);
 
@@ -87,10 +83,6 @@ public abstract class CmdCurrentOp implements ICommand {
                             row.add(entryDoc.getBoolean("active"));
                             row.add(parseCommandTag(originatingCommand.equals("")?getJson(entryDoc, "command"):originatingCommand));
                             row.add(entryDoc.getString("client"));
-                            row.add("" + entryDoc.get("connectionId"));
-                            row.add(entryDoc.getString("desc"));
-                            row.add(entryDoc.getBoolean("waitingForLock"));
-                            row.add(entryDoc.getBoolean("waitingForFlowControl"));
                             table.addRow(row);
 
                         }
