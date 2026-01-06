@@ -82,7 +82,8 @@ public abstract class CmdCurrentOp implements ICommand {
                             row.add(Util.getNumber(entryDoc, "numYields", 0));
                             row.add(entryDoc.getBoolean("active"));
                             row.add(parseCommandTag(originatingCommand.equals("")?getJson(entryDoc, "command"):originatingCommand));
-                            row.add(entryDoc.getString("client"));
+                            String clientVal = entryDoc.getString("client");
+                            row.add(clientVal != null ? clientVal.split(":")[0] : "N/A");
                             table.addRow(row);
 
                         }
